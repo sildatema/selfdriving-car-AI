@@ -8,7 +8,7 @@ const networkCtx = networkCanvas.getContext("2d")
 const road = new Road(carCanvas.width / 2, carCanvas.width * 0.9)
 
 
-const N = 110;
+const N = 2010;
 const cars = generateCars(N);
 let bestCarIndex = 0;
 let bestCar = cars[bestCarIndex];
@@ -41,7 +41,7 @@ function getMutationRateFromDistance(carY, finishY) {
     const distance = Math.max(0, carY - finishY); // bigger = worse
 
     const normalized = Math.min(1, distance / maxDistance);
-    const mutationRate = 0.005 + normalized * (0.2 - 0.005); // from 0.01 to 0.4
+    const mutationRate = 0.01  // from 0.01 to 0.4
 
     return mutationRate;
 }
@@ -233,7 +233,7 @@ function animate(time) {
 
             switch (cars[i].mutationTag) {
                 case "none":
-                    color = "yellow"; // exact brain
+                    color = "Green"; // exact brain
                     break;
                 case "mild":
                     color = "Blue";
